@@ -1,0 +1,36 @@
++-------------------+        +-------------------+          +-------------------+          +-------------------+
+|       Book        |        |       Author      |          |       Patron      |          |      Library      |
++-------------------+        +-------------------+          +-------------------+          +-------------------+
+| - title: string   |        | - name: string    |          | - name: string    |          | - books: List<Book>|
+| - author: Author  |<>----->| - dateOfBirth:    |          | - address: string |          | - authors:         |
+| - ISBN: string    |        |   date            |          |   string          |          |   List<Author>     |
+| - publisher:      |        | - booksWritten:   |          | - phoneNumber:   |           | - patrons:         |
+|   string          |        |   List<Book>      |          |   List<Book>      |          |   List<Patron>     |
+| - numberOfCopies:|         +-------------------+          +-------------------+          +-------------------+
+|   int             |                 |                              |                    | - searchBooksByTitle()|
+| + borrowBook():   |                 |                              |                    | - searchBooksByAuthor()|
+|   void            |                 |                              |                   | - searchBooksByISBN()|
+| + returnBook():   |                 |                              |                   | - borrowBook()|
+|   void            |                 |                              |                   | - returnBook()|
++-------------------+                 |                              |                   | - addBook()|
+      ^               |               |                              |                   | - addAuthor()|
+      |               |               |                              |                   | - addPatron()|
+      |               |                +--------------------------------+-------------------+
+      |               |
+      |    +---------------------+
+      +----|  Borrowable         |
+           |  -----------------  |
+           |  + borrowBook()     |
+           |  + returnBook()     |
+           +---------------------+
+                         |
+                         |
+                         v
+                   +-----------------+
+                   |      Status     |
+                   +-----------------+
+                   | AVAILABLE       |
+                   | CHECKED_OUT     |
+                   | OVERDUE         |
+                   +-----------------+
+
